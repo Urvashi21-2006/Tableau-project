@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Health360 | Healthcare Analytics</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="brand"><span class="brand-mark">✚</span><div><b>Health360</b><small>HEALTH ANALYTICS</small></div></div>
+    <div class="nav-label">WORKSPACE</div>
+    <a class="nav-item active" href="#overview">▦ <span>Overview</span></a>
+    <a class="nav-item" href="#charts">▥ <span>Health Insights</span></a>
+    <a class="nav-item" href="#data">▤ <span>Dataset</span></a>
+    <div class="sidebar-note"><span class="pulse"></span><div><b>Dashboard status</b><small>Ready to explore</small></div></div>
+    <div class="sidebar-bottom">Healthcare data, made clearer.</div>
+  </aside>
+
+  <main class="main" id="overview">
+    <header class="topbar">
+      <div><div class="eyebrow">HEALTHCARE OVERVIEW</div><h1>Health Insights Dashboard</h1><p class="subtitle">Explore health indicators, conditions and demographic patterns.</p></div>
+      <div class="top-actions"><label class="upload-btn" for="csvFile">↑ Upload CSV</label><input type="file" id="csvFile" accept=".csv,text/csv"><button id="resetBtn" class="reset-btn">Reset data</button></div>
+    </header>
+
+    <section class="notice" id="dataNotice"><span>ⓘ</span><div><b>Demo data is being shown.</b> Upload your original <code>smart_healthcare_dataset.csv</code> to display your real dashboard figures.</div></section>
+
+    <section class="filter-row">
+      <div class="filter-title"><span class="filter-icon">☷</span><div><b>Quick filters</b><small>Filter the dashboard views</small></div></div>
+      <label>Gender<select id="genderFilter"><option value="all">All genders</option></select></label>
+      <label>Age group<select id="ageFilter"><option value="all">All ages</option><option value="young">Under 30</option><option value="middle">30–49</option><option value="older">50+</option></select></label>
+      <button id="clearFilters" class="clear-btn">Clear filters ↺</button>
+    </section>
+
+    <section class="kpi-grid">
+      <article class="kpi-card"><div class="kpi-top"><span>Total records</span><span class="kpi-icon blue">▤</span></div><div class="kpi-value" id="totalRecords">—</div><div class="kpi-foot">People in current view</div></article>
+      <article class="kpi-card"><div class="kpi-top"><span>Average age</span><span class="kpi-icon purple">◷</span></div><div class="kpi-value" id="avgAge">—</div><div class="kpi-foot">Years old, on average</div></article>
+      <article class="kpi-card"><div class="kpi-top"><span>Heart disease records</span><span class="kpi-icon coral">♡</span></div><div class="kpi-value" id="heartCount">—</div><div class="kpi-foot" id="heartRate">Across current view</div></article>
+      <article class="kpi-card"><div class="kpi-top"><span>Diabetes records</span><span class="kpi-icon green">✚</span></div><div class="kpi-value" id="diabetesCount">—</div><div class="kpi-foot" id="diabetesRate">Across current view</div></article>
+    </section>
+
+    <section class="chart-grid" id="charts">
+      <article class="panel wide-panel"><div class="panel-head"><div><h2>Health conditions by age</h2><p>Heart disease and diabetes counts across age bands</p></div><span class="chart-tag">AGE ANALYSIS</span></div><div id="ageChart" class="chart-area"></div></article>
+      <article class="panel"><div class="panel-head"><div><h2>Heart disease overview</h2><p>Records with and without heart disease</p></div><span class="chart-tag">CONDITIONS</span></div><div id="heartChart" class="chart-area donut-area"></div><div id="heartLegend" class="legend"></div></article>
+      <article class="panel"><div class="panel-head"><div><h2>Diabetes overview</h2><p>Records with and without diabetes</p></div><span class="chart-tag">CONDITIONS</span></div><div id="diabetesChart" class="chart-area donut-area"></div><div id="diabetesLegend" class="legend"></div></article>
+      <article class="panel"><div class="panel-head"><div><h2>Cholesterol levels</h2><p>Average cholesterol by heart disease status</p></div><span class="chart-tag">RISK FACTORS</span></div><div id="cholesterolChart" class="chart-area"></div></article>
+      <article class="panel"><div class="panel-head"><div><h2>Records by gender</h2><p>Gender distribution in the current view</p></div><span class="chart-tag">DEMOGRAPHICS</span></div><div id="genderChart" class="chart-area"></div></article>
+      <article class="panel"><div class="panel-head"><div><h2>Average health risk score</h2><p>Compare average score by age band</p></div><span class="chart-tag">RISK SCORE</span></div><div id="riskChart" class="chart-area"></div></article>
+    </section>
+
+    <section class="panel data-panel" id="data"><div class="panel-head"><div><h2>Dataset preview</h2><p>First 8 records after filters are applied</p></div><span class="chart-tag" id="rowCountTag">0 ROWS</span></div><div class="table-wrap"><table><thead><tr><th>Age</th><th>Gender</th><th>BMI</th><th>Blood pressure</th><th>Cholesterol</th><th>Heart disease</th><th>Diabetes</th><th>Risk score</th></tr></thead><tbody id="dataTable"></tbody></table></div></section>
+    <footer>Health360 Analytics <span>•</span> Educational dashboard only — not a medical diagnosis.</footer>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
